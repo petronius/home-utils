@@ -1,5 +1,4 @@
 
-" Basic editor environment
 set hidden
 set wildmenu
 set showcmd
@@ -17,21 +16,26 @@ set laststatus=2
 set confirm
 set visualbell
 
-" Highlighting and tabs
 filetype plugin on
 filetype indent plugin on
 syntax on
-set background=dark
+
+if has('gui_running')
+    colorscheme moria
+    hi Normal guibg=#161616 ctermbg=none
+endif
 
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-set relativenumber
 
-hi Normal guibg=#161616 ctermbg=none
-
-map <F11> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+if exists('&relativenumber')
+    set relativenumber
+else
+    set number
+endif
 
 filetype plugin indent on
+
 au BufNewFile,BufReadPost *.dasm,*.dasm16 setl shiftwidth=2 expandtab
 
