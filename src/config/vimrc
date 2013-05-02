@@ -17,9 +17,6 @@ set laststatus=2
 set confirm
 set visualbell
 
-set number
-
-
 " Highlighting and tabs
 filetype plugin on
 filetype indent plugin on
@@ -29,6 +26,7 @@ set background=dark
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set relativenumber
 
 hi Normal guibg=#161616 ctermbg=none
 
@@ -37,4 +35,3 @@ map <F11> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 filetype plugin indent on
 au BufNewFile,BufReadPost *.dasm,*.dasm16 setl shiftwidth=2 expandtab
 
-" call pathogen#infect()

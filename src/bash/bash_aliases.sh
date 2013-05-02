@@ -63,3 +63,10 @@ alias mysqlr='mysql -u root'
 alias mysqlrp='mysql -u root -p'
 # for when my brain is one step ahead of my commands
 alias use="mysql -u root -p "
+
+# Don't include work stuff in this (external) repository, but source it from
+# it's place in the SVN-tracked tree.
+
+if [ -f "~/workspace/Dev/Michael/etc/bash_aliases" ]; then
+    source ~/workspace/Dev/Michael/etc/bash_aliases
+fi

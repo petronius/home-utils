@@ -15,3 +15,9 @@ export DEBEMAIL DEBFULLNAME
 PATH=$PATH:/var/list/.bin
 export PATH
 
+# Don't include work stuff in this (external) repository, but source it from
+# it's place in the SVN-tracked tree.
+
+if [ -f "~/workspace/Dev/Michael/etc/bashrc" ]; then
+    source ~/workspace/Dev/Michael/etc/bashrc
+fi
