@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/petronius/.config'
+let g:netrw_dirhist_2='/home/petronius/workspace/websites/base/app/models'
+let g:netrw_dirhist_3='/home/petronius/workspace/websites/marker/__init__.py'
+let g:netrw_dirhist_4='/home/petronius/workspace/scratch/README.md'
