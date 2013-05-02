@@ -24,6 +24,10 @@ if [ -d "$HOME/bin" ]; then
     export PATH="$PATH:$HOME/bin"
 fi
 
+if [ -d "/usr/local/git/bin/" ]; then
+    export PATH="$PATH:/usr/local/git/bin/"
+fi
+
 export WORKSPACE="$HOME/workspace"
 
 export CDPATH="$CDPATH:$WORKSPACE"
