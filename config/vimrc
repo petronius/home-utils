@@ -1,4 +1,6 @@
 
+" Generic stuff
+
 set hidden
 set wildmenu
 set showcmd
@@ -20,22 +22,45 @@ filetype plugin on
 filetype indent plugin on
 syntax on
 
+" Coloring on the gui
+
 if has('gui_running')
     colorscheme moria
     hi Normal guibg=#161616 ctermbg=none
 endif
 
+" Soft tabs of width 4
+
 set shiftwidth=4
 set softtabstop=4
 set expandtab
 
+" Handling line numbers
+
 if exists('&relativenumber')
     set relativenumber
+
+    :au FocusLost * :set number
+    :au FocusGained * :set relativenumber
+
+    autocmd InsertEnter * :set number
+    autocmd InsertLeave * :set relativenumber
+
+    function! NumberToggle()
+        if(&relativenumber == 1)
+            set number
+        else
+            set relativenumber
+        endif
+    endfunc
+
+    " CTL+N for switching line number mode
+    nnoremap <C-n> :call NumberToggle()<cr>
+
 else
     set number
 endif
 
-filetype plugin indent on
-
+" .dasm support
 au BufNewFile,BufReadPost *.dasm,*.dasm16 setl shiftwidth=2 expandtab
 
