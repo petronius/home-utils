@@ -67,6 +67,6 @@ alias use="mysql -u root -p "
 # Don't include work stuff in this (external) repository, but source it from
 # it's place in the SVN-tracked tree.
 
-if [ -f "~/workspace/Dev/Michael/etc/bash_aliases" ]; then
-    source ~/workspace/Dev/Michael/etc/bash_aliases
+if [ -f "$HOME/workspace/Dev/Michael/etc/bash_aliases" ]; then
+    source $HOME/workspace/Dev/Michael/etc/bash_aliases
 fi
