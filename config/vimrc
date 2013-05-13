@@ -35,6 +35,10 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
+" More intuitive backspace
+
+set backspace=indent,eol,start
+
 " Handling line numbers
 
 if exists('&relativenumber')
