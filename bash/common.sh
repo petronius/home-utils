@@ -40,3 +40,5 @@ source "$HOME/.utils/bash/bash_aliases.sh"
 
 export PYTHONSTARTUP="$HOME/.pystatup/__init__.py"
 export PYTHONIOENCODING="utf-8"
+
+export EDITOR=vim
