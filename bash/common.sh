@@ -42,3 +42,4 @@ export PYTHONSTARTUP="$HOME/.pystatup/__init__.py"
 export PYTHONIOENCODING="utf-8"
 
 export EDITOR=vim
+export INPUTRC="$HOME/.inputrc"
