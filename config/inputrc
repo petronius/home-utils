@@ -1,0 +1,5 @@
+##
+## Readline configuration
+##
+
+set editing-mode vi

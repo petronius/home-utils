@@ -13,7 +13,7 @@ SUBDIRS=('bash' 'config')
 
 BASHFILES=('.bash_profile' '.bash_aliases' '.bash_logout' '.bashrc')
 
-RCFILES=('.vimrc' '.gitconfig')
+RCFILES=('.vimrc' '.gitconfig' '.inputrc')
 
 DIRECTORIES=('.vim' '.pystartup')
 
