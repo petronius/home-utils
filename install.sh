@@ -15,7 +15,7 @@ BASHFILES=('.bash_profile' '.bash_aliases' '.bash_logout' '.bashrc')
 
 RCFILES=('.vimrc' '.gitconfig' '.inputrc')
 
-DIRECTORIES=('.vim' '.pystartup', '.utilbin')
+DIRECTORIES=('.vim' '.pystartup' '.utilbin')
 
 dirset=('SUBDIRS' 'BASHFILES' 'RCFILES' 'DIRECTORIES')
 mkdir -p "$HOME/.utils/"
@@ -38,7 +38,7 @@ for val in ${dirset[@]}; do
                 sourcepath="$HOME/.utils/config/${f##*.}"
                 ;;
             DIRECTORIES)
-                sourcepath="$HOME/.utils/bash/${f##*.}"
+                sourcepath="$SCRIPTDIR/${f##*.}"
                 ;;
         esac
 

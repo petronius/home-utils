@@ -1,6 +1,7 @@
+execute pathogen#infect()
 
 " Generic stuff
-
+"
 set hidden
 set wildmenu
 set showcmd
@@ -68,6 +69,7 @@ endif
 " .dasm support
 au BufNewFile,BufReadPost *.dasm,*.dasm16 setl shiftwidth=2 expandtab
 
+" Create directories on save
 function s:MkNonExDir(file, buf)
     if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
         let dir=fnamemodify(a:file, ':h')
