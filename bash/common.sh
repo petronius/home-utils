@@ -19,6 +19,8 @@ case $USER in
         ;;
 esac
 
+export PATH="$PATH:$HOME/.utilbin"
+
 # Append local bin directories
 if [ -d "$HOME/bin" ]; then
     export PATH="$PATH:$HOME/bin"

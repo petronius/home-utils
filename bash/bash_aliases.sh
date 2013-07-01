@@ -70,3 +70,13 @@ alias use="mysql -u root -p "
 if [ -f "$HOME/workspace/Dev/Michael/etc/bash_aliases" ]; then
     source $HOME/workspace/Dev/Michael/etc/bash_aliases
 fi
+
+for f in $(/bin/ls $DEVBIN); do
+    if [ ! "${f##*.}" == 'txt' ] && [ ! "${f##*.}" == 'pyc' ]; then
+        chmod u+x "$DEVBIN$f"
+        name="${f%.*}"
+        if [ "$name" != "$f" ]; then
+            alias "$name"="$f"
+        fi
+    fi
+done

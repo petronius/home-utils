@@ -15,7 +15,7 @@ BASHFILES=('.bash_profile' '.bash_aliases' '.bash_logout' '.bashrc')
 
 RCFILES=('.vimrc' '.gitconfig' '.inputrc')
 
-DIRECTORIES=('.vim' '.pystartup')
+DIRECTORIES=('.vim' '.pystartup', '.utilbin')
 
 dirset=('SUBDIRS' 'BASHFILES' 'RCFILES' 'DIRECTORIES')
 mkdir -p "$HOME/.utils/"
