@@ -2,4 +2,5 @@
 ## Readline configuration
 ##
 
-set editing-mode vi
+## This is actually mildly frustrating
+## set editing-mode vi
