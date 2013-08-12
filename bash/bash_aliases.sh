@@ -17,9 +17,6 @@ fi
 if [ ! $VIMEXISTS ] && [ "$(uname)" == "Darwin" ] && [ -f /Applications/Vim.app/Contents/MacOS/Vim ]; then
     alias vim='/Applications/Vim.app/Contents/MacOS/Vim'
     alias nano='/Applications/Vim.app/Contents/MacOS/Vim'
-else
-    ## ugh
-    alias vim='vi'
 fi
 
 ## Mistypes and compensation for general dumbassery
