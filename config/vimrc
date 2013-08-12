@@ -25,8 +25,8 @@ syntax on
 
 " Coloring on the gui
 
+colorscheme moria
 if has('gui_running')
-    colorscheme moria
     hi Normal guibg=#161616 guifg=#AAAAAA ctermbg=none
 endif
 
