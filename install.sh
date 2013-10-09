@@ -11,7 +11,7 @@ NOW="$(date +%s)"
 
 BASHFILES=('.bash_profile' '.bash_aliases' '.bash_logout' '.bashrc')
 
-RCFILES=('.vimrc' '.gitconfig' '.inputrc')
+RCFILES=('.vimrc' '.gitconfig' '.inputrc' '.conkyrc')
 
 DIRECTORIES=('.vim' '.pystartup' '.utilbin')
 
