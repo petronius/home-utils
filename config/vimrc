@@ -2,6 +2,9 @@ execute pathogen#infect()
 
 " Generic stuff
 "
+
+set tabline=2
+
 set hidden
 set wildmenu
 set showcmd
@@ -28,6 +31,19 @@ syntax on
 colorscheme moria
 if has('gui_running')
     hi Normal guibg=#161616 guifg=#AAAAAA ctermbg=none
+    
+    set guioptions-=m
+    set guioptions-=T
+
+    autocmd VimEnter * NERDTree
+    autocmd BufEnter * NERDTreeMirror
+
+    autocmd VimEnter * wincmd w
+
+    autocmd VimEnter * wincmd w
+
+else
+    set t_Co=256
 endif
 
 " Soft tabs of width 4

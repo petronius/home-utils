@@ -9,16 +9,15 @@
 SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 NOW="$(date +%s)"
 
-SUBDIRS=('bash' 'config')
-
 BASHFILES=('.bash_profile' '.bash_aliases' '.bash_logout' '.bashrc')
 
 RCFILES=('.vimrc' '.gitconfig' '.inputrc')
 
 DIRECTORIES=('.vim' '.pystartup' '.utilbin')
 
+XMONAD=('xmonad.hs')
+
 dirset=('SUBDIRS' 'BASHFILES' 'RCFILES' 'DIRECTORIES')
-mkdir -p "$HOME/.utils/"
 
 for val in ${dirset[@]}; do
 
@@ -27,18 +26,17 @@ for val in ${dirset[@]}; do
         targetpath="$HOME/$f"
         
         case $val in
-            SUBDIRS)
-                targetpath="$HOME/.utils/$f"
-                sourcepath="$SCRIPTDIR/$f"
-                ;;
             BASHFILES)
-                sourcepath="$HOME/.utils/bash/${f##*.}.sh"
+                sourcepath="$SCRIPTDIR/bash/${f##*.}.sh"
                 ;;
             RCFILES)
-                sourcepath="$HOME/.utils/config/${f##*.}"
+                sourcepath="$SCRIPTDIR/config/${f##*.}"
                 ;;
             DIRECTORIES)
                 sourcepath="$SCRIPTDIR/${f##*.}"
+                ;;
+            XMONAD)
+                sourcepath="xmonad/$f"
                 ;;
         esac
 
@@ -54,3 +52,12 @@ for val in ${dirset[@]}; do
 
     done
 done
+
+if [ -n "$(which xmonad)" ]; then
+    echo "Recompiling xmoand ..."
+    xmonad --recompile
+fi
+
+if [[ -d "$HOME/.utils" ]]; then
+    echo "Links flattened, $HOME/.utils/ now okay to delete."
+fi
