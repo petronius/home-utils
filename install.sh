@@ -53,6 +53,12 @@ for val in ${dirset[@]}; do
     done
 done
 
+if [ -z "$(which conky)" ]; then
+    echo "Conky not installed, removing conkyconfig and .conkyrc links ..."
+    rm -v "$HOME/.conkyconfig"
+    rm -v "$HOME/.conkyrc"
+fi
+
 if [ -n "$(which xmonad)" ]; then
     echo "Recompiling xmoand ..."
     xmonad --recompile
