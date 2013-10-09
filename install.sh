@@ -47,7 +47,7 @@ for val in ${dirset[@]}; do
             rm -v $targetpath
          elif [ -d $targetpath ] || [ -f $targetpath ]; then
             echo "Backing up exising version of $targetpath ..."
-            mv -v $targetpath "$HOME/${targetpath//\//\_}_$NOW"
+            mv -v $targetpath "$HOME/${targetpath//\//_}_$NOW"
          fi
          echo $sourcepath $targetpath
          ln -sv $sourcepath $targetpath
