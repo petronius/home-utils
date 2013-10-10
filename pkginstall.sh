@@ -4,7 +4,6 @@
 
 ARCH_PKGS=(
     alsa-utils
-    cairo
     conky-cli
     coreutils
     dnsutils
@@ -18,15 +17,10 @@ ARCH_PKGS=(
     gzip
     imagemagick
     inetutils
-    irssi
-    jre7-openjdk
-    jre7-openjdk-headless
-    lapack
     ldns
     less
     lsb-release
     lsof
-    lua
     lynx
     mariadb
     mlocate
@@ -64,18 +58,22 @@ ARCH_PKGS=(
     ruby
     rxvt-unicode
     scribus
+    spotify
     steam
-    subversion
     sudo
     tar
     tmux
     unrar
     unzip
     usbutils
+    vim-minibufexpl
+    vim-nerdtree
+    vim-runtime
     vlc
     wget
     xmonad
     xmonad-contrib
+    xsel
     xterm
 )
 
