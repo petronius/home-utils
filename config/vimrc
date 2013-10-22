@@ -28,8 +28,10 @@ syntax on
 
 " Coloring on the gui
 
-colorscheme moria
 if has('gui_running')
+
+    colorscheme moria
+
     hi Normal guibg=#161616 guifg=#AAAAAA ctermbg=none
     
     set guioptions-=m
@@ -43,7 +45,7 @@ if has('gui_running')
     autocmd VimEnter * wincmd w
 
 else
-    set t_Co=256
+    colorscheme default
 endif
 
 " Soft tabs of width 4
