@@ -83,7 +83,7 @@ DEBIAN_PKGS=(
     # coming soon, I guess?
 )
 
-DISTRO=$(lsb_release -i | grep -Po "\t[a-z]+" | sed 's/^.//')
+DISTRO=$(lsb_release -i | grep -Po "\t[a-z]+" | cut -c 2- )
 
 if [[ "$DISTRO" == "arch" ]];
    
