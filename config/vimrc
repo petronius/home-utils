@@ -1,32 +1,39 @@
 execute pathogen#infect()
 
-" Generic stuff
 "
-
+" Set text handling options
+"
 set tabline=2
-
 set hidden
 set wildmenu
 set showcmd
 set hlsearch
-
 set ignorecase
 set smartcase
-
 set autoindent
-
 set ruler
-
 set laststatus=2
-
 set confirm
 set visualbell
+" Soft tabs of width 4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+" More intuitive backspace
+set backspace=indent,eol,start
 
+"
+" Filetype and syntax handling
+"
 filetype plugin on
 filetype indent plugin on
 syntax on
+" .dasm support
+au BufNewFile,BufReadPost *.dasm,*.dasm16 setl shiftwidth=2 expandtab
 
+"
 " Custom commands
+"
 " clear search
 command C let @/ = ""
 " turn off search highlighting
@@ -40,42 +47,10 @@ command QA qa
 command Revim so ~/.vimrc
 command Vimrc e ~/.vimrc
 
-" Coloring on the gui
-
-if has('gui_running')
-
-    colorscheme moria
-
-    hi Normal guibg=#161616 guifg=#AAAAAA ctermbg=none
-    
-    set guioptions-=m
-    set guioptions-=T
-
-    autocmd VimEnter * NERDTree
-    autocmd BufEnter * NERDTreeMirror
-
-    autocmd VimEnter * wincmd w
-
-    autocmd VimEnter * wincmd w
-
-    autocmd BufEnter * lcd %:p:h
-
-else
-    colorscheme default
-endif
-
-" Soft tabs of width 4
-
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-
-" More intuitive backspace
-
-set backspace=indent,eol,start
-
-" Handling line numbers
-
+"
+" Handling line numbers. Give relative line numbers in Insert mode, and
+" absolute ones in Command mode.
+"
 if exists('&relativenumber')
     set relativenumber
 
@@ -100,10 +75,9 @@ else
     set number
 endif
 
-" .dasm support
-au BufNewFile,BufReadPost *.dasm,*.dasm16 setl shiftwidth=2 expandtab
-
+"
 " Create directories on save
+"
 function s:MkNonExDir(file, buf)
     if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
         let dir=fnamemodify(a:file, ':h')
@@ -117,7 +91,39 @@ augroup BWCCreateDir
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
-" Colors!
+"
+" NERDTree setup
+"
+"TODO: Parse this out of working directory's .gitignore file?
+let NERDTreeIgnore = ['\.pyc$','\.pyo$','__pycache__$','\.egg-info$','\.o$','\.hi$',]
+
+"
+" GUI vs Terminal switches
+"
+if has('gui_running')
+
+    colorscheme moria
+
+    hi Normal guibg=#161616 guifg=#AAAAAA ctermbg=none
+    
+    set guioptions-=m
+    set guioptions-=T
+
+    autocmd VimEnter * NERDTree
+    autocmd BufEnter * NERDTreeMirror
+
+    autocmd VimEnter * wincmd w
+    autocmd VimEnter * wincmd w
+
+    autocmd BufEnter * lcd %:p:h
+
+else
+    colorscheme default
+endif
+
+"
+" Colors for use by the statusline
+"
 hi User1 ctermbg=white ctermfg=black guibg=#444444 guifg=#EEEEEE
 hi User2 ctermbg=white ctermfg=black guibg=#115555 guifg=#DDDDDD
 hi User3 ctermbg=white ctermfg=black guibg=#999999 guifg=#111111
@@ -128,6 +134,10 @@ hi User5 ctermbg=white ctermfg=black guibg=#999944 guifg=black
 " Git indicator
 hi User6 ctermbg=white ctermfg=black guibg=#449944 guifg=black
 
+"
+" Set up the actual statusline
+"
+" /some/file/path [filetype]                [RO][+][gitbranch][col:row:totalrow]
 set statusline=%1*
 set statusline+=\ %.40F                         " filename + path
 set statusline+=\ %2*
