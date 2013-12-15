@@ -19,6 +19,8 @@ XMONAD=('xmonad.hs')
 
 dirset=('SUBDIRS' 'BASHFILES' 'RCFILES' 'DIRECTORIES')
 
+ln -fsv $SCRIPTDIR $HOME/.utils
+
 for val in ${dirset[@]}; do
 
     for f in $(eval echo "\${$val[@]}"); do

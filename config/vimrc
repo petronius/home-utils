@@ -26,6 +26,20 @@ filetype plugin on
 filetype indent plugin on
 syntax on
 
+" Custom commands
+" clear search
+command C let @/ = ""
+" turn off search highlighting
+command H noh
+" aliases because I have fat fingers
+command W w
+command Q q
+command Qa qa
+command QA qa
+" Quick .vimrc access
+command Revim so ~/.vimrc
+command Vimrc e ~/.vimrc
+
 " Coloring on the gui
 
 colorscheme moria
@@ -41,6 +55,8 @@ if has('gui_running')
     autocmd VimEnter * wincmd w
 
     autocmd VimEnter * wincmd w
+
+    autocmd BufEnter * lcd %:p:h
 
 else
     set t_Co=256
@@ -98,3 +114,31 @@ augroup BWCCreateDir
     autocmd!
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
+
+" Colors!
+hi User1 ctermbg=white ctermfg=black guibg=#444444 guifg=#EEEEEE
+hi User2 ctermbg=white ctermfg=black guibg=#444499 guifg=#DDDDDD
+hi User3 ctermbg=white ctermfg=black guibg=#999999 guifg=#111111
+" For read-only
+hi User4 ctermbg=white ctermfg=black guibg=#994444 guifg=black
+" For modified
+hi User5 ctermbg=white ctermfg=black guibg=#999944 guifg=black
+" Git indicator
+hi User6 ctermbg=white ctermfg=black guibg=#449944 guifg=black
+
+set statusline=%1*
+set statusline+=\ %.40F                     " filename + path
+set statusline+=\ %2*
+set statusline+=\%y                         " filetype
+set statusline+= 
+set statusline+=%3*           
+set statusline+=%=                          " alignment
+set statusline+=%6*           
+set statusline+=%{fugitive#statusline()}    " Git status (if relevant)
+set statusline+=%3*           
+set statusline+=%4*                         " color formatting
+set statusline+=%r                          " Read-only flag
+set statusline+=%5*                         " color formatting
+set statusline+=%m                          " Modified flag
+set statusline+=%3*  
+set statusline+=\ [%2c:%3l/%L]\             " Cursor pos (column, row, total)
