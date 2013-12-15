@@ -119,7 +119,7 @@ augroup END
 
 " Colors!
 hi User1 ctermbg=white ctermfg=black guibg=#444444 guifg=#EEEEEE
-hi User2 ctermbg=white ctermfg=black guibg=#444499 guifg=#DDDDDD
+hi User2 ctermbg=white ctermfg=black guibg=#115555 guifg=#DDDDDD
 hi User3 ctermbg=white ctermfg=black guibg=#999999 guifg=#111111
 " For read-only
 hi User4 ctermbg=white ctermfg=black guibg=#994444 guifg=black
@@ -129,18 +129,13 @@ hi User5 ctermbg=white ctermfg=black guibg=#999944 guifg=black
 hi User6 ctermbg=white ctermfg=black guibg=#449944 guifg=black
 
 set statusline=%1*
-set statusline+=\ %.40F                     " filename + path
+set statusline+=\ %.40F                         " filename + path
 set statusline+=\ %2*
-set statusline+=\%y                         " filetype
-set statusline+= 
-set statusline+=%3*           
-set statusline+=%=                          " alignment
-set statusline+=%6*           
-set statusline+=%{fugitive#statusline()}    " Git status (if relevant)
-set statusline+=%3*           
-set statusline+=%4*                         " color formatting
-set statusline+=%r                          " Read-only flag
-set statusline+=%5*                         " color formatting
-set statusline+=%m                          " Modified flag
+set statusline+=\%y                             " filetype
+set statusline+=%3*             
+set statusline+=%=                              " alignment
+set statusline+=%6*%{fugitive#statusline()}     " Git status (if relevant)
+set statusline+=%4*%r                           " Read-only flag
+set statusline+=%5*%m                           " Modified flag
 set statusline+=%3*  
-set statusline+=\ [%2c:%3l/%L]\             " Cursor pos (column, row, total)
+set statusline+=\ [%2c:%3l/%L]\                 " Cursor pos (column, row, total)
