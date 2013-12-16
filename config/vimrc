@@ -102,6 +102,13 @@ let NERDTreeIgnore = ['\.pyc$','\.pyo$','__pycache__$','\.egg-info$','\.o$','\.h
 "
 if has('gui_running')
 
+    " Tame MacVim a bit
+    let os=substitute(system('uname'), '\n', '', '')
+    if os == 'Darwin' || os == 'Mac'
+        let g:NERDTreeDirArrows=0
+        set lines=70 columns=117
+    endif
+
     colorscheme moria
 
     hi Normal guibg=#161616 guifg=#AAAAAA ctermbg=none
