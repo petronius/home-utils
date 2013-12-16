@@ -109,10 +109,8 @@ if has('gui_running')
     set guioptions-=m
     set guioptions-=T
 
-    if exists("*NERDTree")
-        autocmd VimEnter * NERDTree
-        autocmd BufEnter * NERDTreeMirror
-    endif
+    autocmd VimEnter * NERDTree
+    autocmd BufEnter * NERDTreeMirror
 
     autocmd VimEnter * wincmd w
     autocmd VimEnter * wincmd w
