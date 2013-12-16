@@ -109,6 +109,7 @@ if has('gui_running')
         set lines=70 columns=117
     endif
 
+    let g:moria_style="dark"
     colorscheme moria
 
     hi Normal guibg=#161616 guifg=#AAAAAA ctermbg=none
