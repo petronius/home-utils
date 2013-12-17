@@ -96,6 +96,8 @@ augroup END
 "
 "TODO: Parse this out of working directory's .gitignore file?
 let NERDTreeIgnore = ['\.pyc$','\.pyo$','__pycache__$','\.egg-info$','\.o$','\.hi$',]
+" I think I actually prefer this to arrows in all instances
+let g:NERDTreeDirArrows=0
 
 "
 " GUI vs Terminal switches
@@ -105,7 +107,6 @@ if has('gui_running')
     " Tame MacVim a bit
     let os=substitute(system('uname'), '\n', '', '')
     if os == 'Darwin' || os == 'Mac'
-        let g:NERDTreeDirArrows=0
         set lines=70 columns=117
     endif
 
