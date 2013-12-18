@@ -22,6 +22,9 @@ set expandtab
 " More intuitive backspace
 set backspace=indent,eol,start
 
+" Buffer and movement handling
+set switchbuf=useopen
+
 "
 " Filetype and syntax handling
 "
@@ -94,8 +97,10 @@ augroup END
 "
 " NERDTree setup
 "
-"TODO: Parse this out of working directory's .gitignore file?
+
+" TODO: Set this to read from .gitignore (see python-custom plugin)
 let NERDTreeIgnore = ['\.pyc$','\.pyo$','__pycache__$','\.egg-info$','\.o$','\.hi$',]
+
 " I think I actually prefer this to arrows in all instances
 let g:NERDTreeDirArrows=0
 
@@ -158,3 +163,10 @@ set statusline+=%4*%r                           " Read-only flag
 set statusline+=%5*%m                           " Modified flag
 set statusline+=%3*  
 set statusline+=\ [%2c:%3l/%L]\                 " Cursor pos (column, row, total)
+
+
+python <<EOF
+import vim
+
+print vim.current.buffer
+EOF
