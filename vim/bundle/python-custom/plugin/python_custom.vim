@@ -1,8 +1,8 @@
 
 "
-" After a short delay, if we're handing out in NERDTree or MiniBufExplorer, jump
-" back to the main pane. (Otherwise I keep accidentally opening files in the
-" wrong panes.)
+" After a short delay, if we're hanging out in NERDTree or MiniBufExplorer,
+" jump back to the main pane. (Otherwise I keep accidentally opening files in
+" the wrong panes.)
 "
 " This relies on :set switchbuf=useopen
 "
