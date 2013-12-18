@@ -15,12 +15,9 @@ PROSCRIBED_NAMES = ['NERD_tree_', '-MiniBufExplorer-']
 
 def update_buffer():
     for window in vim.windows:
-        for name in PROSCRIBED_NAMES:
-            if not name in window.buffer.name:
-                n = window.buffer.number - 1
-                print n
-                vim.command("sb %s" % n)
-                return
+        namein = set([name in window.buffer.name for name in PROSCRIBED_NAMES])
+        if namein == set([False]):
+            vim.command("sb %s" % window.buffer.number)
 
 for name in PROSCRIBED_NAMES:
     if name in vim.current.buffer.name:
@@ -33,6 +30,16 @@ endfunction
 autocmd CursorHold * call PyCustom_ResetToMainBuffer()
 autocmd CursorHoldI * call PyCustom_ResetToMainBuffer()
 
+" Debugging, really
+function! PyCustom_ListBuffers()
+python << EOF
+
+import vim
+for buffer in vim.buffers:
+    print buffer.number, buffer.name
+
+EOF
+endfunction
 
 "
 " If we're opening vim inside a git repo, let's read the NERDTreeIgnore values
