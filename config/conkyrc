@@ -6,4 +6,4 @@ use_spacer none
 pad_percents 2
 
 TEXT
-^p(0)${time} ^p(25)[ ${cpu cpu1} ${cpu cpu2} ${cpu cpu3} ${cpu cpu4} ${cpu cpu5} ${cpu cpu6} ] ^pa(300) ${mpd_smart} [${mpd_elapsed}]
+^p(0)${time} ^p(25)[ ${cpu cpu1} ${cpu cpu2} ${cpu cpu3} ${cpu cpu4} ${cpu cpu5} ${cpu cpu6} ]
