@@ -4,6 +4,7 @@
 #
 
 source $HOME/.utils/bash/system.sh
+source $HOME/.utils/bash/applications.sh
 
 alias realias="source $HOME/.utils/bash/bash_aliases.sh"
 alias srelaod="source $HOME/.utils/bash/system.sh"
@@ -14,45 +15,9 @@ else
     alias '~~'="source $HOME/.bashrc"
 fi
 
-if [ ! $VIMEXISTS ] && [ "$(uname)" == "Darwin" ] && [ -f /Applications/Vim.app/Contents/MacOS/Vim ]; then
-    alias vim='/Applications/Vim.app/Contents/MacOS/Vim'
-    alias nano='/Applications/Vim.app/Contents/MacOS/Vim'
+if [ "$(uname)" == "Darwin" ] && [ -f /Applications/MacVim.app/Contents/MacOS/Vim ]; then
+    alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 fi
-
-## Programs
-
-alias thunderbird="thunderbird > /dev/null 2>&1 &"
-alias firefox="firefox > /dev/null 2>&1 &"
-alias spotify="spotify > /dev/null 2>&1 &"
-alias steam="steam > /dev/null 2>&1 &"
-music() {
-    mopidy="$(pgrep mopidy)"
-    if [ -z "$mopidy" ]; then
-        echo "Starting mopidy..."
-        mopidy > /dev/null 2>&1 &
-        sleep 1
-    fi
-    ncmpc
-}
-
-export music
-
-openvpn() {
-    ovpn="$(pgrep openvpn)"
-    if [ -z $openvpn ]; then
-        sudo /usr/bin/openvpn --config /etc/openvpn/client.conf >(logger -t "[openvpn]") 2>&1 &
-    fi
-}
-
-export openvpn
-
-ide() {
-    cd $HOME/workspace
-    gvim $@
-    cd -
-}
-
-export ide
 
 if [ -z "$SSH_CLIENT" ]; then
     alias vim="gvim"

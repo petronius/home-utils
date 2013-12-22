@@ -65,7 +65,3 @@ if [ -n "$(which xmonad)" ]; then
     echo "Recompiling xmoand ..."
     xmonad --recompile
 fi
-
-if [[ -d "$HOME/.utils" ]]; then
-    echo "Links flattened, $HOME/.utils/ now okay to delete."
-fi
