@@ -25,9 +25,21 @@ set backspace=indent,eol,start
 " Buffer and movement handling
 set switchbuf=useopen
 
+let g:syntastic_enable_balloons = 1
+let g:syntastic_enable_highlighting = 1
+let g:syntastic_enable_signs = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_python_checkers = ['pyflakes']
+
+" Highlight variable names on hover (NetBeans style)
+autocmd CursorHold *  if &l:modifiable | exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\')) | endif
+autocmd CursorMoved * match IncSearch "" 
+
+
 "
 " Filetype and syntax handling
 "
+filetype on
 filetype plugin on
 filetype indent plugin on
 syntax on
@@ -130,6 +142,7 @@ if has('gui_running')
     autocmd VimEnter * wincmd w
 
     autocmd BufEnter * lcd %:p:h
+    autocmd VimEnter * SyntasticToggleMode
 
 else
     colorscheme default
@@ -158,15 +171,10 @@ set statusline+=\ %2*
 set statusline+=\%y                             " filetype
 set statusline+=%3*             
 set statusline+=%=                              " alignment
+set statusline+=%4*             
+set statusline+=%{SyntasticStatuslineFlag()}    " Sytactic
 set statusline+=%6*%{fugitive#statusline()}     " Git status (if relevant)
 set statusline+=%4*%r                           " Read-only flag
 set statusline+=%5*%m                           " Modified flag
 set statusline+=%3*  
 set statusline+=\ [%2c:%3l/%L]\                 " Cursor pos (column, row, total)
-
-
-python <<EOF
-import vim
-
-print vim.current.buffer
-EOF
