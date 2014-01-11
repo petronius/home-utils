@@ -21,11 +21,11 @@ for app in ${GUI_APPLICATIONS[@]}; do
         sudo chown $user $logdir
         sudo chmod u+rw $logdir
 
-        read tmpfunc <<HEREDOC
+        read -r -d '' tmpfunc <<HEREDOC
 
             ${app}() {
 
-                if hash logrotate >/dev/null 2>&1; then
+                if hash logrotate >/dev/null 2>&1 && [ -f $logfile ]; then
                     logrotate $logfile
                 fi
                 $(hash -t $app) >$logfile 2>&1 &
@@ -35,6 +35,8 @@ HEREDOC
 
         eval "$tmpfunc"
 
+    #else
+        # echo 'Warning: `hash '$app'` failed.'
     fi
 
 done

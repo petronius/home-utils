@@ -1,0 +1,6 @@
+xsetroot -cursor_name left_ptr
+setxkbdmap -layout uk
+if [ -f ~/.Xresources ]; then
+    xrdb -merge ~/.Xresources
+fi
+exec xmonad 

@@ -19,7 +19,9 @@ if [ "$(uname)" == "Darwin" ] && [ -f /Applications/MacVim.app/Contents/MacOS/Vi
     alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 fi
 
-if [ -z "$SSH_CLIENT" ]; then
+if [ "$TERM" != "linux" ] && [ "$TERM" != "" ] && [ -z "$SSH_CLIENT" ]; then
+    # If we aren't in a graphical terminal emulator, don't load up gvim.
+    # Otherwise, we can assume that a new gvim window is what is wanted.
     alias vim="gvim"
 fi
 
