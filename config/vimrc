@@ -19,6 +19,7 @@ set visualbell
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set colorcolumn=80
 " More intuitive backspace
 set backspace=indent,eol,start
 
