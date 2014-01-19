@@ -19,6 +19,7 @@ set visualbell
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set colorcolumn=80
 " More intuitive backspace
 set backspace=indent,eol,start
 
@@ -66,18 +67,19 @@ command Vimrc e ~/.vimrc
 " Handling line numbers. Give relative line numbers in Insert mode, and
 " absolute ones in Command mode.
 "
+set number
 if exists('&relativenumber')
     set relativenumber
 
-    :au FocusLost * :set number
+    :au FocusLost * :set norelativenumber
     :au FocusGained * :set relativenumber
 
-    autocmd InsertEnter * :set number
+    autocmd InsertEnter * :set norelativenumber
     autocmd InsertLeave * :set relativenumber
 
     function! NumberToggle()
         if(&relativenumber == 1)
-            set number
+            set norelativenumber
         else
             set relativenumber
         endif
@@ -86,8 +88,6 @@ if exists('&relativenumber')
     " CTL+N for switching line number mode
     nnoremap <C-n> :call NumberToggle()<cr>
 
-else
-    set number
 endif
 
 "
