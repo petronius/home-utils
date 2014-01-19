@@ -25,10 +25,11 @@ for app in ${GUI_APPLICATIONS[@]}; do
 
             ${app}() {
 
-                if hash logrotate >/dev/null 2>&1 && [ -f $logfile ]; then
-                    logrotate $logfile
+                if [ -f "$logfile" ]; then
+                    mv $logfile "$logfile.$(date +%s)"
+                    find $logdir -type f -ctime 7 -exec rm -vf {} \;
                 fi
-                $(hash -t $app) >$logfile 2>&1 &
+                $(hash -t $app) $@ >$logfile 2>&1 &
 
             }
 HEREDOC
