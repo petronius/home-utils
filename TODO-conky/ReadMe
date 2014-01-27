@@ -1,0 +1,11 @@
+For Gmail user only:
+Rename .conkyrc_gmail to .conkyrc if you want to use gmail to monitor. Also add your username and password in gmail.py,   
+
+For Pop3 user only:
+Add your servername, username and password in conkyrc.
+
+For the weather to work, you will need weatherget from http://developer.berlios.de/projects/weatherget/ or if you use Arch, get it at http://aur.archlinux.org/packages.php?K=weatherget.   Type http://xoap.weather.com/search/search?where=[yourcity] to find your location id in your browser and then add your location id to $LOCATION in .conkyrc.. 
+
+If you use Arch Linux, read the README.txt in the arch-updates folder on how to set it up.
+
+Put .conkyrc in your home folder and .conkyweatherrc, gmail.py  (only if you use gmail to monitor) and conky-updates.pl (only for Arch Linux) in ~/scripts folder.

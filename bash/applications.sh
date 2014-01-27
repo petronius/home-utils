@@ -8,6 +8,8 @@ GUI_APPLICATIONS=(
     firefox
     spotify
     steam
+    gimp
+    grafx2
 )
 
 for app in ${GUI_APPLICATIONS[@]}; do

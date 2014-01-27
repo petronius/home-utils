@@ -67,6 +67,8 @@ alias mysqlrp='mysql -u root -p'
 # for when my brain is one step ahead of my commands
 alias use="mysql -u root -p "
 
+alias wicd='wicd-curses'
+
 # Don't include work stuff in this (external) repository, but source it from
 # it's place in the SVN-tracked tree.
 

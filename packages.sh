@@ -5,5 +5,5 @@ PACMAN_PKGS=(
 )
 
 YAOURT_PKGS=(
-    ttf-bitstream-vera
+    ttf-bitstream-vera # Fix font issues
 )
