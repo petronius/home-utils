@@ -42,6 +42,26 @@ EOF
 endfunction
 
 "
+" Drop back into Normal mode when switching to MiniBufExplorer. (Insert mode
+" screws up the buffer explorer, and can lead to messing up the view)
+"
+function! PyCustom_MiniBufExpl_ForceNormal()
+python << EOF
+
+import vim
+
+BUFNAME = '-MiniBufExplorer-'
+
+if BUFNAME in vim.current.buffer.name:
+    vim.command(":set noinsertmode")
+
+EOF
+endfunction
+
+autocmd BufEnter * call PyCustom_MiniBufExpl_ForceNormal()
+
+" CURRENTLY UNUSED
+"
 " If we're opening vim inside a git repo, let's read the NERDTreeIgnore values
 " from .gitignore. Otherwise, use only the defaults
 "
@@ -67,6 +87,7 @@ DEFAULT_IGNORE = [
     '\.hi$',
 ]
 
+# Get the top-level directory of the project to find the .gitignore file
 p = subprocess.Popen([
     'git',
     'rev-parse',
@@ -77,20 +98,21 @@ stdout, stderr = p.communicate()
 if not p.returncode:
     fpath = os.path.join(stdout.strip(), '.gitignore')
 
-    with open(fpath) as f:
-        patterns = f.readlines()
-        for pattern in patterns:
-            pattern = pattern.strip()
-            if not pattern:
-                continue
-            if pattern.startswith('#'):
-                continue
-            if pattern.endswith('/'):
-                # Directories
-                pattern = pattern.strip('/')
-                DEFAULT_IGNORE.append(pattern + '$[[dir]]')
-            else:
-                DEFAULT_IGNORE.append(pattern)
+    try:
+        with open(fpath) as f:
+            patterns = f.readlines()
+            for pattern in patterns:
+                pattern = pattern.strip()
+                if not pattern or pattern.startswith('#'):
+                    continue
+                if pattern.endswith('/'):
+                    # Directories
+                    pattern = pattern.strip('/')
+                    DEFAULT_IGNORE.append(pattern + '$[[dir]]')
+                else:
+                    DEFAULT_IGNORE.append(pattern)
+    except (IOError, OSError):
+        pass
 
 EOF
 endfunction

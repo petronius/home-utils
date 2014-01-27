@@ -24,8 +24,10 @@ set colorcolumn=80
 set backspace=indent,eol,start
 
 " Buffer and movement handling
+let g:miniBufExplMaxSize = 1
 set switchbuf=useopen
 
+" Syntax highlighting with Syntastic
 let g:syntastic_enable_balloons = 1
 let g:syntastic_enable_highlighting = 1
 let g:syntastic_enable_signs = 1
