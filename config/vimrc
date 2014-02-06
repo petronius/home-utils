@@ -38,7 +38,6 @@ let g:syntastic_python_checkers = ['pyflakes']
 autocmd CursorHold *  if &l:modifiable | exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\')) | endif
 autocmd CursorMoved * match IncSearch "" 
 
-
 "
 " Filetype and syntax handling
 "
@@ -52,18 +51,21 @@ au BufNewFile,BufReadPost *.dasm,*.dasm16 setl shiftwidth=2 expandtab
 "
 " Custom commands
 "
-" clear search
-command C let @/ = ""
-" turn off search highlighting
-command H noh
 " aliases because I have fat fingers
-command W w
-command Q q
-command Qa qa
-command QA qa
+command! W w
+command! Q q
+command! Qa qa
+command! QA qa
 " Quick .vimrc access
-command Revim so ~/.vimrc
-command Vimrc e ~/.vimrc
+command! Revim so ~/.vimrc
+command! Vimrc e ~/.vimrc
+command! -nargs=1 Vopen vert belowright sb <args>
+
+" Quick window switching
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
 
 "
 " Handling line numbers. Give relative line numbers in Insert mode, and
@@ -95,7 +97,7 @@ endif
 "
 " Create directories on save
 "
-function s:MkNonExDir(file, buf)
+function! s:MkNonExDir(file, buf)
     if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
         let dir=fnamemodify(a:file, ':h')
         if !isdirectory(dir)
@@ -126,7 +128,7 @@ if has('gui_running')
     " Tame MacVim a bit
     let os=substitute(system('uname'), '\n', '', '')
     if os == 'Darwin' || os == 'Mac'
-        set lines=70 columns=117
+        set lines=90 columns=207
     endif
 
     let g:moria_style="dark"
