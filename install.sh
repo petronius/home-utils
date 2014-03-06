@@ -9,7 +9,7 @@
 SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 NOW="$(date +%s)"
 
-BASHFILES=('.bash_profile' '.bash_aliases' '.bash_logout' '.bashrc')
+BASHFILES=('.bash_profile' '.bash_aliases' '.bash_logout' '.bashrc' '.bpython')
 
 RCFILES=('.vimrc' '.gitconfig' '.inputrc' '.conkyrc')
 

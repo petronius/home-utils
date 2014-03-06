@@ -52,6 +52,11 @@ alias chmox="chmod"
 alias valias='vi ~/.bash_aliases'
 alias now='date "+%Y-%m-%d %H:%M:%S"'
 
+alias _ping=$(which ping)
+ping() {
+    _ping $@ | ts.py
+}
+
 ## Programmin'
 
 alias pyton="python"
