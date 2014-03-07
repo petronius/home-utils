@@ -152,6 +152,10 @@ else
     colorscheme default
 endif
 
+" Periodically save the current session for easy restoration in case of
+" accidental shutdown. (Restore with `:source ~/.vim_session.auto`)
+autocmd BufEnter * :mksession! ~/.vim_session.auto
+
 "
 " Colors for use by the statusline
 "
